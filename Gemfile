@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 gem 'sqlite3'
 gem 'devise'
+gem 'therubyracer',  platforms: :ruby
 
 # frontend
 gem 'slim-rails'
