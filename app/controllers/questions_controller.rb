@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :check_questions_author, only: [:edit, :update, :destroy]
 
   def index
     @questions = Question.all
@@ -50,5 +51,9 @@ class QuestionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params.require(:question).permit(:title, :contents)
+    end
+
+    def check_questions_author
+      redirect_to @question, notice: "You are not question's author!" if current_user != @question.user      
     end
 end
