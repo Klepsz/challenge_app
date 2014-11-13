@@ -1,9 +1,12 @@
 .answer id="answer-#{answer.id}"
   .contents= answer.contents
+  .likes
+    = pluralize(answer.likes.count, "Like")
   .actions= button_to "Like it", likes_path(answer_id: answer)
   .details
     '  Answered on
     = l(answer.created_at, format: :long)
     '  by
     = link_to answer.user, user_path(answer.user)
+    '  
 
