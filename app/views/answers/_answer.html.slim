@@ -3,10 +3,16 @@
   .likes
     = pluralize(answer.likes.count, "Like")
   .actions= button_to "Like it", likes_path(answer_id: answer)
+
+  - if current_user == @question.user
+    - if answer.accepted?
+      = link_to "Reject answer", edit_question_answer_path(answer.question, answer)
+    - else
+      = link_to "Accept answer", edit_question_answer_path(answer.question, answer)
+
   .details
     '  Answered on
     = l(answer.created_at, format: :long)
     '  by
     = link_to answer.user, user_path(answer.user)
     '  
-

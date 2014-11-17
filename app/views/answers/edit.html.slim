@@ -1,0 +1,14 @@
+h1 Do you want to accept the answer?
+
+h2 Your question:
+p = @question.title
+
+h2 Answer:
+p = @answer.contents
+
+= form_for [@question, @answer] do |f|
+  .field
+    = f.check_box :accepted
+    = f.label :accepted
+  .actions
+    = f.submit "Save"

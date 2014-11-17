@@ -52,8 +52,4 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:title, :contents)
     end
-
-    def check_questions_author
-      redirect_to @question, notice: "You are not question's author!" if current_user != @question.user      
-    end
 end

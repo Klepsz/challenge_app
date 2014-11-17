@@ -70,6 +70,14 @@ div {
     color: #666;
     font-size: smaller;
   }
+  #answer_accepted {
+    width: auto;
+    height: auto;
+    margin-left: 0;
+  }
+  label[for="answer_accepted"] {
+    display: inline;
+  }
 }
 
 .field_with_errors {
