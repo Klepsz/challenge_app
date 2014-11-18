@@ -20,9 +20,9 @@ class AnswersController < ApplicationController
   end
 
   def update
-    if @answer.update(answer_params) && @answer.accepted == true
+    if @answer.update(answer_params) && @answer.accepted_answer == true
       redirect_to question_path(@question), notice: "Answer has been accepted"
-    elsif @answer.update(answer_params) && @answer.accepted == false
+    elsif @answer.update(answer_params) && @answer.accepted_answer == false
       redirect_to question_path(@question), notice: "Answer has been rejected"
     else
       redirect_to edit_question_answer_path(@question, @answer)
@@ -41,6 +41,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:contents, :accepted)
+      params.require(:answer).permit(:contents, :accepted_answer)
     end
 end
