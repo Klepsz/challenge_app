@@ -7,6 +7,7 @@ class Answer < ActiveRecord::Base
 
   before_update :check_answer_acceptance
   before_create :check_if_question_answered
+  after_save :add_points_after_acceptation
 
   protected
 
@@ -22,5 +23,10 @@ class Answer < ActiveRecord::Base
       errors.add(:base, "Question is already asnwered")
       false
     end
+  end
+
+  def add_points_after_acceptation
+    user.points += 25 if accepted_answer == true
+    user.save
   end
 end
