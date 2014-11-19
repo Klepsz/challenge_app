@@ -5,12 +5,22 @@ class Answer < ActiveRecord::Base
 
   validates :contents, presence: true
 
-  before_save :check_answer_acceptance
+  before_update :check_answer_acceptance
+  before_create :check_if_question_answered
+
+  protected
 
   def check_answer_acceptance
-    if self.question.answers.where(accepted_answer: true).size == 1 && self.accepted_answer == true
-      errors.add(:answer, "You have accepted one answer already")
-      self.accepted_answer = false
+    if question.answers.where(accepted_answer: true).size == 1 && accepted_answer == true
+      errors.add(:base, "You have accepted one answer already")
+      false
+    end
+  end
+
+  def check_if_question_answered
+    if question.answers.where(accepted_answer: true).size == 1
+      errors.add(:base, "Question is already asnwered")
+      false
     end
   end
 end

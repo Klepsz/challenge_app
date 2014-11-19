@@ -1,13 +1,12 @@
 .answer id="answer-#{answer.id}"
   .contents= answer.contents
-  
+
   .likes
     = pluralize(answer.likes.count, "Like")
   .actions= button_to "Like it", likes_path(answer_id: answer)
   
   - if answer.accepted_answer?
     = image_tag(src="check.png", alt: "Accepted image", class: "accepted-answer")
-
   - if current_user == @question.user
     - if answer.accepted_answer?
       = link_to "Reject answer", edit_question_answer_path(answer.question, answer)
