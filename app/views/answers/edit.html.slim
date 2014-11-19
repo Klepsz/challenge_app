@@ -6,7 +6,14 @@ p = @question.title
 h2 Answer:
 p = @answer.contents
 
+
 = form_for [@question, @answer] do |f|
+  - if @answer.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@answer.errors.count, "error")} prohibited this answer from being saved:"
+      ul
+        - @asnwer.errors.full_messages.each do |message|
+          li = message
   .field
     = f.check_box :accepted_answer
     = f.label :accepted_answer
