@@ -1,0 +1,14 @@
+h1 Leaderboard
+
+table.table
+  thead
+    tr
+      th Name
+      th Points
+  tbody
+  - @users.each do |user|
+    tr
+      td =user.user_name
+      td =user.points
+
+
