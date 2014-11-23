@@ -14,6 +14,13 @@ dorota = User.create!(user_name: "Dorota", email: "dorota@example.com", password
 piotrek = User.create!(user_name: "Piotrek", email: "piotrek@example.com", password: "1234abcd")
 wojtek = User.create!(user_name: "Wojtek", email: "wojtek@example.com", password: "1234abcd")
 
+dorota.avatar = File.open("/home/kuba/Pulpit/avatars/dorota.jpg")
+dorota.save
+piotrek.avatar = File.open("/home/kuba/Pulpit/avatars/piotrek.jpg")
+piotrek.save
+wojtek.avatar = File.open("/home/kuba/Pulpit/avatars/wojtek.jpg")
+wojtek.save
+
 question1 = Question.create!(title: "Ile nóg ma koń?",
                              contents: "Zawsze mnie to intrygowało. Proszę o pomoc",
                              user_id: dorota.id)
