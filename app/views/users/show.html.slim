@@ -1,6 +1,8 @@
 .user id="user-#{@user.id}"
   h1= @user.user_name
 
+  = image_tag @user.avatar.url(:thumb)
+
   .questions
     h3 Questions
 

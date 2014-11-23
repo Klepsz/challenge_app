@@ -1,6 +1,6 @@
 h2 Edit Profile
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f|
   = devise_error_messages!
 
   .field
@@ -20,6 +20,10 @@ h2 Edit Profile
   .field
     = f.label :password_confirmation
     = f.password_field :password_confirmation, autocomplete: "off"
+
+  .field
+    = f.label :avatar
+    = f.file_field :avatar
 
   .field
     = f.label :current_password
