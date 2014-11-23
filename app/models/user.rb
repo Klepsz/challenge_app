@@ -9,7 +9,10 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :likes
 
-  has_attached_file :avatar, styles: { thumb: "100x100#" }, default_url: "/assets/missing.png"
+  has_attached_file :avatar, styles: { thumb: "100x100#" },
+                    default_url: "/assets/missing.png",
+                    url: "/assets/users/:id/:style/:basename.:extension",
+                    path: ":rails_root/public/assets/users/:id/:style/:basename.:extension"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates_attachment_size :avatar, less_than: 1.megabytes
 
