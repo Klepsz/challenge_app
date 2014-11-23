@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :likes
+  
+  has_attached_file :avatar, styles: { thumb: "100x100>" }, default_url: "/images/users/:id/:style/:basename.:extension"
+  validates_attachment_presence :photo
+  validates_attachment_size :photo, less_than: 5.megabytes
+  validates_attachment_content_type :avatar, content_type: ['image/jpeg', 'image/png']
 
   def to_s
     email
