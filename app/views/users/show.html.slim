@@ -1,7 +1,11 @@
 .user id="user-#{@user.id}"
-  h1= @user.user_name
 
-  = image_tag @user.avatar.url(:thumb)
+  .row
+    .user-avatar
+      = image_tag @user.avatar.url(:thumb)
+    .user-name
+      h1= @user.user_name
+
 
   .questions
     h3 Questions
