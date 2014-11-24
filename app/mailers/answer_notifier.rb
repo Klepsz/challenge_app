@@ -1,22 +1,16 @@
 class AnswerNotifier < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "challenge_app@example.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.answer_notifier.new_asnwer.subject
-  #
-  def new_asnwer
-    @greeting = "Hi"
 
-    mail to: "to@example.org"
+  def new_asnwer(answer, questions_author)
+    @answer = answer
+    @questions_author = questions_author
+    subject_content = "New answer to: '#{@answer.question.title}'"
+
+
+    mail to: @questions_author.email, subject: subject_content
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.answer_notifier.accepted_answer.subject
-  #
   def accepted_answer
     @greeting = "Hi"
 

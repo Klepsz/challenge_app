@@ -10,6 +10,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
 
     if @answer.save
+      AnswerNotifier.new_asnwer(@answer, @question.user).deliver
       redirect_to question_path(@question), notice: "Answer was successfully created."
     else
       redirect_to question_path(@question), alert: "There was an error when adding answer."
