@@ -5,6 +5,9 @@
       = image_tag @user.avatar.url(:thumb)
     .user-name
       h1= @user.user_name
+    .superstar-badge
+      - if @user.superstar
+          = image_tag(src="superuser.jpg", alt: "Superuser badge")
 
 
   .questions

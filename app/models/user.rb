@@ -16,7 +16,21 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates_attachment_size :avatar, less_than: 1.megabytes
 
+  after_save :add_superstar_badge
+
   def to_s
     email
+  end
+
+  protected
+
+  def add_superstar_badge
+    if points >= 1000 && superstar == false
+      self.superstar = true
+      self.save
+    elsif superstar == true && points < 1000
+      self.superstar = false
+      self.save
+    end
   end
 end

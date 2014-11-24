@@ -10,7 +10,7 @@ User.destroy_all
 Question.destroy_all
 Answer.destroy_all
 
-dorota = User.create!(user_name: "Dorota", email: "dorota@example.com", password: "1234abcd")
+dorota = User.create!(user_name: "Dorota", email: "dorota@example.com", password: "1234abcd", points: 1000)
 piotrek = User.create!(user_name: "Piotrek", email: "piotrek@example.com", password: "1234abcd")
 wojtek = User.create!(user_name: "Wojtek", email: "wojtek@example.com", password: "1234abcd")
 
