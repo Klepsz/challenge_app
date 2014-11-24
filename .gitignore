@@ -17,3 +17,5 @@
 
 # Ignore local config files
 /config/database.yml
+
+/config/secrets.yml
