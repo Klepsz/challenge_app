@@ -2,7 +2,7 @@ class AnswerNotifier < ActionMailer::Base
   default from: "challenge_app@example.com"
 
 
-  def new_asnwer(answer, questions_author)
+  def new_answer(answer, questions_author)
     @answer = answer
     @questions_author = questions_author
     subject_content = "New answer to: '#{@answer.question.title}'"
