@@ -22,6 +22,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params) && @answer.accepted_answer == true
+      AnswerNotifier.accepted_answer(@answer).deliver
       redirect_to question_path(@question), notice: "Answer has been accepted"
     elsif @answer.update(answer_params) && @answer.accepted_answer == false
       redirect_to question_path(@question), alert: "Answer has been rejected"

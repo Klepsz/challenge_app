@@ -7,13 +7,11 @@ class AnswerNotifier < ActionMailer::Base
     @questions_author = questions_author
     subject_content = "New answer to: '#{@answer.question.title}'"
 
-
     mail to: @questions_author.email, subject: subject_content
   end
 
-  def accepted_answer
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def accepted_answer(answer)
+    @answer = answer
+    mail to: @answer.user.email, subject: "Congratulations. Your answer has been accepted"
   end
 end
