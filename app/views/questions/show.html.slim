@@ -8,10 +8,10 @@
           
   h2= @question.title
 
-  = render "details", question: @question
-
   p
-    = @question.contents
+    = markdown(@question.contents)
+
+  = render "details", question: @question
 
   .links
     = link_to 'Edit', edit_question_path(@question)

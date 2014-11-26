@@ -4,7 +4,7 @@ h2 Your question:
 p = @question.title
 
 h2 Answer:
-p = @answer.contents
+p = markdown(@answer.contents)
 
 
 = form_for [@question, @answer] do |f|

@@ -13,7 +13,7 @@
       .actions= button_to "Like it", likes_path(answer_id: answer)
 
     .col-md-5
-      .contents= answer.contents
+      .contents= markdown(answer.contents)
       .details
         '  Answered on
         = l(answer.created_at, format: :long)
