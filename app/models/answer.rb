@@ -1,6 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_many :likes
 
   validates :contents, presence: true

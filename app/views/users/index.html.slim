@@ -3,12 +3,17 @@ h1 Leaderboard
 table.table
   thead
     tr
-      th Name
       th Points
+      th Name
+      th e-mail
+      th Questions asked
+      th Answers given
   tbody
   - @users.each do |user|
     tr
-      td =user.user_name
       td =user.points
-
+      td = link_to user.user_name, user_path(user)
+      td =user.email
+      td =user.questions.size
+      td =user.answers.size
 
