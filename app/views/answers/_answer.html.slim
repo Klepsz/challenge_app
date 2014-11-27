@@ -8,9 +8,8 @@
           = link_to "Reject answer", edit_question_answer_path(answer.question, answer)
         - else
           = link_to "Accept answer", edit_question_answer_path(answer.question, answer)
-      .likes
-        = pluralize(answer.likes.count, "Like")
-      .actions= button_to "Like it", likes_path(answer_id: answer)
+      = render "likes/likes_counter", answer: answer
+      .actions= button_to "Like it", likes_path(answer_id: answer), remote: true
 
     .col-md-5
       .contents= markdown(answer.contents)

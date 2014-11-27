@@ -1,0 +1,2 @@
+$("#answer-<%= @answer.id %>-likes").html("<%= pluralize(@answer.likes.count, "Like") %>");
+
