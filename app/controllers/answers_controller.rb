@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
 
     if @answer.save
-      AnswerNotifier.new_answer(@answer, @question.user).deliver
+      AnswerNotifier.delay.new_answer(@answer, @question.user)
       redirect_to question_path(@question), notice: "Answer was successfully created."
     else
       redirect_to question_path(@question), alert: "There was an error when adding answer."
@@ -22,7 +22,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params) && @answer.accepted_answer == true
-      AnswerNotifier.accepted_answer(@answer).deliver
+      AnswerNotifier.delay.accepted_answer(@answer)
       redirect_to question_path(@question), notice: "Answer has been accepted"
     elsif @answer.update(answer_params) && @answer.accepted_answer == false
       redirect_to question_path(@question), alert: "Answer has been rejected"
