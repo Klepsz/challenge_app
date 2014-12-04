@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'therubyracer',  platforms: :ruby
 gem 'delayed_job_active_record'
+gem 'figaro'
 
 # frontend
 gem 'slim-rails'
