@@ -11,13 +11,14 @@ h1 Sign up
     label= f.label :user_name
     = f.text_field :user_name, autofocus: true
 
-  .field
-    label= f.label :password
-    = f.password_field :password, autocomplete: 'off'
-
-  .field
-    label= f.label :password_confirmation
-    = f.password_field :password_confirmation, autocomplete: 'off'
+  - if f.object.password_required?
+    .field
+      label= f.label :password
+      = f.password_field :password, autocomplete: 'off'
+  
+    .field
+      label= f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: 'off'
 
   .field
     label= f.label :avatar
