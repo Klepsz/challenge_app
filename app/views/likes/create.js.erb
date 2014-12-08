@@ -1,2 +1,4 @@
+
+$("#answer-<%= @answer.id %>-error").html("<%= @error %>");
 $("#answer-<%= @answer.id %>-likes").html("<%= pluralize(@answer.likes.count, "Like") %>");
 
