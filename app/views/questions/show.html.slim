@@ -25,13 +25,12 @@
   - else
     '  There are no answers to this question.
 
-  h3 Add answer
+  - if @question.answered?
+      h3 Topic is closed.
+      p Question has accepted answer already.
+  - else
+      h3 Add answer
+      = render "answers/form"
 
-  = form_for [@question, @answer] do |f|
 
-    .field
-      = f.label :contents
-      = f.text_area :contents
-
-    .actions= f.submit 'Save'
 
