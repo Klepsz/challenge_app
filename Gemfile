@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # core
 gem 'rails', '4.1.1'
-gem 'sqlite3'
 gem 'devise'
 gem 'omniauth-github'
 gem 'therubyracer',  platforms: :ruby
@@ -25,7 +24,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # development
 group :development do
+  gem 'sqlite3'
   gem 'spring'
+end
+
+# production
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 # testing
