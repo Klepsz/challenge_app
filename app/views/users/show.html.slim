@@ -2,7 +2,11 @@
 
   .row
     .user-avatar
-      = image_tag @user.avatar.url(:thumb)
+      - if @user.avatar?
+          = image_tag @user.avatar.url(:thumb)
+      - else
+          = image_tag(src="missing.png", alt: "Image missing")
+
     .user-name
       h1= @user.user_name
     .superstar-badge
