@@ -7,7 +7,9 @@ table.table
       th Name
       th e-mail
       th Questions asked
+      th Questions asnwered
       th Answers given
+      th Answers accepted
   tbody
   - @users.each do |user|
     tr
@@ -15,5 +17,7 @@ table.table
       td = link_to user.user_name, user_path(user)
       td =user.email
       td =user.questions.size
+      td =user.questions.where(answered: true).size
       td =user.answers.size
+      td =user.answers.where(accepted_answer: true).size
 
